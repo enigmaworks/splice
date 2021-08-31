@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Roboto+Slab:wght@300;400;500&display=swap');
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(20, 20, 20);
+    color: #ccc;
+    font-size: calc(80% +1vw);
+    position: relative;
+}
+.hideScroll{
+      overflow: hidden;
+}
+
+h1, h2{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    font-family: "Orbitron", monospace;
+    min-height: 2em;
+    font-size: 4em;
+    color: white;
+}
+h2{
+    font-family: "Roboto Slab", sans-serif; 
+    font-size: 2em;
+    font-weight: 500;
+    min-height: 1.5em;
+}
+
+
+canvas{
+    border: 1px solid #bbb;
+    position: relative;
+    aspect-ratio: 3/2;
+    width: calc(100% - 2em);
+    background-color: #080808;
+    margin: 1em;
+}
+.game{
+    position: relative;
+}
+.game button{
+    background-color: #4444;
+    position: absolute;
+    bottom: calc(1rem + 11px);
+    right: calc(1rem + 8px);
+    border: 2px solid #555;
+    border-radius: .25em;
+    color: #888;
+    font-size: 2rem;
+    width: 1.25em;
+    height: 1.25em;
+    padding: 0;
+    line-height: 1em;
+    font-weight: 800;
+    z-index: 2;
+}
+.rotate{
+    transform: rotate(180deg);
+}
+.game, section{
+    max-width: 50em;
+    margin: 0 auto;
+}
+section{
+    font-family: "roboto slab", sans-serif;
+    padding: 1em;
+    line-height: 1.5em;
+}
+    section p{ margin-bottom: 1em; }
+
+
+.fullscreen{
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000b;
+    max-width: none;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    
+}
+.horizontal{
+    width: auto;
+    height: 96vh;
+}
+.vertical{
+    width: 96vw;
+    height: auto;
+}
+
+.info{
+    max-height: 0; /*set in js to 600px*/
+    transition: max-height 300ms ease-in;
+    position: absolute;
+    top: calc(1rem + 1px);
+    right: calc(1rem + 1px);
+    bottom: calc(1rem + 5px);
+    width: 13em;
+    background-color: #00000088;
+    font-size: clamp(.25rem, 1rem, 2vw);
+    overflow: hidden;
+}
+.infoFS{
+    position: absolute;
+}
+    .info ul{ list-style-type: none; padding: 0; }
+    .info li{
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+    }
+    .score, .highscore, .level, .wave{
+        align-items: center;
+        justify-content: center;
+    }
+    .score{
+        font-size: 2.75em;
+        font-family: "orbitron", monospace;
+        padding: .5em;
+        color: #fff;
+    }
+    .level, .wave{ color: #eee; }
+    .level{ font-size: 1.5em; font-weight: 500; }
+    .wave{ font-size: 1.3em; font-style: italic; }
+    .highscore{ font-size: 1.2em; font-weight: 500; }
+    .info p{ margin:  0 .25em; }
+
+
+.keys{
+    color: #999;
+    font-weight: 500;
+    font-family: "Orbitron", monospace;
+    display: flex;
+    justify-content: center;
+    margin: 1em 0;
+    flex-direction: column;
+}
+    .keys div{ margin-bottom: 1em; }
+    img.key{
+        height: 2em;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    #svg-text{ font: bold 10px monospace; fill: black;}
+    #right-arrow{ transform: rotate(180deg); }
+    #up-arrow{ transform: rotate(90deg); }
+    #down-arrow{ transform: rotate(270deg); }
+
+
+@media only screen and (min-width: 52em) {
+    .instructions{
+        display: flex;
+        gap: 2rem;
+    }
+    .main{
+        flex-basis: 66%;
+    }
+    .keys{
+        display: block;
+    }
+}
+@media only screen and (min-width: 40em){
+    .keys{
+        flex-direction: row;
+        gap: 2em;
+    }
+}

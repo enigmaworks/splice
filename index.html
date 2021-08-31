@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <title>Splice</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script src="utility.js"></script>
+    <script type="module" src="render.js"></script>
+</head>
+<body>
+    <h1>Splice</h1>
+    <main id="gameWrapper" class="game">
+        <canvas id="canvas">This game needs Javascript enabled to run! Check your browser settings!</canvas>
+        <button id="fullscreenBTN">⇱</button>
+        <div class="info" id="info">
+            <ul>
+                <li class="score">
+                    <p id="score">12345</p>
+                </li>
+                <li class="level">
+                    <p class="label">Level </p>
+                    <p class="info-content"></p>
+                </li>
+                <li class="wave">
+                    <p class="label">Wave</p>
+                    <p class="info-content"></p>
+                </li>
+                <li>
+                    <p class="label">Lasers Shot: </p>
+                    <p class="info-content"></p>
+                </li>
+                <li>
+                    <p class="label">Accuracy: </p>
+                    <p class="info-content"></p>
+                </li>
+                <li>
+                    <p class="label">Enemies Destroyed: </p>
+                    <p class="info-content"></p>
+                </li>
+                <li>
+                    <p class="label">Mis-Hits: </p>
+                    <p class="info-content"></p>
+                </li>
+                <li>
+                    <p class="label">Splices: </p>
+                    <p class="info-content"></p>
+                </li>
+                <li class="highscore">
+                    <p class="label">High Score: </p>
+                    <p class="info-content"></p>
+                </li>
+            </ul>
+        </div>
+    </main>
+    <h2>Instructions</h2>
+    <section class="instructions">
+        <div class="keys">
+            <div>
+                <img class="key" id="left-arrow" src="/images/arrow.svg" alt="left arrow">
+                <img class="key" id="right-arrow" src="/images/arrow.svg" alt="right arrow">
+                Rotate
+            </div>
+            <div>
+                <img class="key" id="up-arrow" src="/images/arrow.svg" alt="up arrow">
+                <img class="key" id="down-arrow" src="/images/arrow.svg" alt="down arrow">
+                Change Laser
+            </div>
+            <div">
+                <img class="key" id="spacebar" src="/images/spacebar.svg" alt="spacebar">
+                Shoot
+            </div>
+        </div>    
+        <div class="main">
+            <p>Survive as many waves as possible while earning points by destroying enemies, gaining boosts, and avoiding splices.</p>
+            <p>Enemies come in three types, each with thier own special characteristic. They each also have a weakness. If hit with a laser of the same energy type as themselves, an enemy will lose power. When they get to zero, they explode. However, if hit with the wrong energy type, they may gain power or splice.</p>
+            <p>When an enemy splices, it divides into more enemies. Depending on the energy type and strength of the enemy, it will divide into a number of new enemies with varying strength and energy types.  </p>
+        </div>
+    </section>
+    <section class="credits">
+        <div>
+            <p>
+                Blaster Shot 10_1 by <a target="_blank"  href="https://freesound.org/people/newlocknew/">Newlocknew</a>
+                <br>Sound found on <a target="_blank" href="https://freesound.org">FreeSound.org</a>
+                <br>Creative Commons Attribution 3.0 Unported <a target="_blank" href="https://creativecommons.org/licenses/by/3.0/deed">licenses</a>
+                <br>Sound has been modified
+            </p>
+            <p>
+                Laser Blast x3 by <a target="_blank" href="https://freesound.org/people/peridactyloptrix/">Peridactlyoptrix</a>
+                <br>Sound found on <a target="_blank" href="https://freesound.org">FreeSound.org</a>
+                <br>Creative Commons Zero <a target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/deed">license</a>
+            </p>
+        </div>
+        <div class="music">
+            <p>
+                Cloud Nine by <a target="_blank" href="https://soundcloud.com/hayden-folker">Hayden Folker</a>
+                <br>Music promoted by <a target="_blank" href = "https://www.free-stock-music.com">FreeStockMusic.com</a>
+                <br>Creative Commons Attribution 3.0 Unported <a target="_blank" href="https://creativecommons.org/licenses/by/3.0/deed">licenses</a>
+            </p>
+        </div>
+    </section>
+</body>
+</html>

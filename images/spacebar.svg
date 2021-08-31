@@ -1,0 +1,7 @@
+<svg width="300" height="100" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <rect  rx="5" stroke-width="12" id="svg_1" height="80" width="280" y="10" x="10" stroke="#888" fill="#333"/>
+  <text font-style="normal" font-weight="900" xml:space="preserve" text-anchor="start" font-family="monospace" font-size="50" id="svg_2" y="62" x="30" stroke-width="0" fill="#bbb">spacebar</text>
+ </g>
+</svg>
