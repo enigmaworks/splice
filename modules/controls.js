@@ -5,11 +5,29 @@ import { player } from "./player.js";
 let c = document.getElementById('canvas').getContext('2d');
 
 export function playerControls(){
-	if(keys.left){
+    if(keys.left){
+        if(player.spin > 0){ player.spin = 0; }
+        player.spin--;
         player.rotation--;
+        if(player.spin < -7){
+            player.rotation -= 2;
+        }
+        if(player.spin < -21){
+            player.rotation -= 3;
+        }
     } else if(keys.right){
+        if(player.spin < 0){ player.spin = 0; }
+        player.spin++;
         player.rotation ++;
-    } 
+        if(player.spin > 7){
+            player.rotation+= 2
+        }
+        if(player.spin > 21){
+            player.rotation += 3;
+        }
+    }  else {
+        player.spin = 0;
+    }
     if (Math.abs(player.rotation) > 360){
         player.rotation = Math.abs(player.rotation) - 360;
     }

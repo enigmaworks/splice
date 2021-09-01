@@ -126,23 +126,25 @@ export function laserColisions(){
                 if(lType === eType){
                     enemies.weaken(ei);
                 }
-                if (lType === 1) {
-                    if (eType === 2) {
-                        enemies.strengthen(ei);
-                    } else if (eType === 3){
-                        enemies.divide(ei);
-                    }
-                } else if (lType === 2){
-                    if (eType === 1) {
-                        enemies.strengthen(ei);
-                    } else if (eType === 3){
-                        enemies.divide(ei);
-                    }  
-                } else {
-                    if (eType === 1) {
-                        enemies.strengthen(ei);
-                    } else if (eType === 2){
-                        enemies.divide(ei);
+                if(enemies.type[ei] !== 4){
+                    if (lType === 1) {
+                        if (eType === 2) {
+                            enemies.strengthen(ei);
+                        } else if (eType === 3){
+                            enemies.divide(ei);
+                        }
+                    } else if (lType === 2){
+                        if (eType === 1) {
+                            enemies.strengthen(ei);
+                        } else if (eType === 3){
+                            enemies.divide(ei);
+                        }  
+                    } else {
+                        if (eType === 1) {
+                            enemies.strengthen(ei);
+                        } else if (eType === 2){
+                            enemies.divide(ei);
+                        }
                     }
                 }
                 lasers.delete(li);

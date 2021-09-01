@@ -13,7 +13,7 @@ export let player = {
     laserChangeSpeed: 12,
     laserChange: 0,
     laser: 0,
-    shootSpeed: 10,
+    shootSpeed: 7,
     shootTimer: 0,
 }
 

@@ -61,7 +61,7 @@ export let enemies = {
             sp = 1;
         } else if ( p % 2 === 0 ) {
             enemies.power[i] = p/2;
-            sp =  enemies.power[i] - 1;
+            sp =  enemies.power[i] + 1;
         } else {
             enemies.power[i] = Math.ceil(p/2);
             sp =  enemies.power[i] - 1;
@@ -83,15 +83,24 @@ export let enemies = {
 export function enemyMovement(){
     enemies.type.forEach((e, i) =>{
         //enemies.x[i] += 10;
-        enemies.y[i] += 0.25;
+        if(enemies.type[i] === 4){
+            enemies.y[i] += 0.35;
+        }{
+            enemies.y[i] += 0.25;
+        }
         if(enemies.y[i] > canvas.height - 10){
             enemies.delete(i);
         }
     })
 }
 
-function getRadius(power){
-    return Math.round(power * 1.05 + 17);
+function getRadius(power, type){
+    if (type === 4){
+        return 14;
+    } else if(type === 3){
+        return Math.round(power * 1.02 + 22);
+    }
+    return Math.round(power * 1.02 + 18);
 }
 
 export function drawEnemies(){
@@ -99,7 +108,7 @@ export function drawEnemies(){
         if(enemies.power[i] <= 0){
             enemies.delete(i);
         } else {
-            let radius = getRadius(enemies.power[i]);
+            let radius = getRadius(enemies.power[i], enemies.type[i]);
             if(enemies.radius[i] < radius){
                 enemies.radius[i]++;
             } else if (enemies.radius[i] > radius){
@@ -235,4 +244,13 @@ export function drawEnemies(){
             }
         }
     })
+}
+
+export function launchDrones(){
+    enemies.type.forEach((type, i) => {
+        if(type === 3){
+            console.log(i);
+            enemies.create(enemies.x[i], enemies.y[i], 4, 1, enemies.energyType[i]);
+        }
+    });
 }

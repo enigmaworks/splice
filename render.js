@@ -9,7 +9,7 @@ import {game, createWave} from "./modules/game.js"
 import {currentPage, splashscreenP, homescreenP, optionsP, gameP, playBTN} from "./modules/pages.js";
 import {keyDownHandler,keyUpHandler,clickHandler} from "./modules/events.js"
 import {units} from "./modules/units.js"
-import {enemies, enemyMovement, drawEnemies} from "./modules/enemies.js"
+import {enemies, enemyMovement, launchDrones, drawEnemies} from "./modules/enemies.js"
 
 let canvas = document.getElementById('canvas');
 let c = canvas.getContext('2d');
@@ -27,16 +27,11 @@ function renderLoop(){
     renderPage();
 }
 
-let frames = 0;
-let pause = 100;
-let spawnCount = 200;
+let launchDelay = 0;
+let spawnCount = 130;
 
 function renderPage() {
     c.clearRect(0,0, canvas.width, canvas.height);
-    frames++;
-    if(frames >= pause){
-        frames = 0;
-    }
     if(currentPage === "render"){
         splashscreenP();
     }
@@ -56,6 +51,11 @@ function renderPage() {
             });
             effects.createNew(2);
             spawnCount = 131;
+        }
+        launchDelay++;
+        if(launchDelay >= 250){
+            launchDelay = 0;
+            launchDrones();
         }
         spawnCount++;
         if(spawnCount > 130){
