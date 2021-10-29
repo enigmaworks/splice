@@ -14,6 +14,7 @@ export let enemies = {
     type: [],
     power: [],
     radius: [],
+    pointValue: [],
     spawnList: [],
 
     addToSpawnList: (type, power, energyType) =>{
@@ -26,18 +27,23 @@ export let enemies = {
     shuffleSpawnList(){
         shuffle(enemies.spawnList);
     },
-    create: (x,y,type,power, eType)=>{
+    create: (x,y,type,power, eType, worthpoints)=>{
         enemies.x.unshift(x);
         enemies.y.unshift(y);
         enemies.type.unshift(type);
         enemies.power.unshift(power);
         enemies.energyType.unshift(eType);
         enemies.radius.unshift(0);
+        if(worthpoints){
+            enemies.pointValue.unshift(Math.ceil((power**2)/2));
+        } else {
+            enemies.pointValue.unshift(0);
+        }
     },
     spawn: ()=>{
         if(enemies.spawnList.length > 0){
             let e = enemies.spawnList[0];
-            enemies.create(units.randomNum(50,units.xCenter*2 -50), -50, e.type, e.power, e.energyType)
+            enemies.create(units.randomNum(50,units.xCenter*2 -50), -50, e.type, e.power, e.energyType, true)
             enemies.spawnList.splice(0, 1);
         }
     },
@@ -67,7 +73,7 @@ export let enemies = {
             sp =  enemies.power[i] - 1;
         }
         enemies.x[i] = enemies.x[i] - enemies.radius[i] * 2;
-        enemies.create(enemies.x[i] + enemies.radius[i]  * 2, enemies.y[i], enemies.type[i], sp, enemies.energyType[i]);
+        enemies.create(enemies.x[i] + enemies.radius[i]  * 2, enemies.y[i], enemies.type[i], sp, enemies.energyType[i], false);
     },
     delete: (i)=>{
         enemies.x.splice(i, 1);
@@ -76,6 +82,8 @@ export let enemies = {
         enemies.power.splice(i, 1);
         enemies.energyType.splice(i, 1);
         enemies.radius.splice(i, 1);
+        game.increaseScore(enemies.pointValue);
+        enemies.pointValue.splice(i,1);
         console.log("dead");
     }
 }
@@ -250,7 +258,7 @@ export function launchDrones(){
     enemies.type.forEach((type, i) => {
         if(type === 3){
             console.log(i);
-            enemies.create(enemies.x[i], enemies.y[i], 4, 1, enemies.energyType[i]);
+            enemies.create(enemies.x[i], enemies.y[i], 4, 1, enemies.energyType[i], true);
         }
     });
 }
